@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #header button {
+            background-color: #4ccf50;
+            color: #fff;
+            padding: 35px;
+            margin: 0;
+            border: none;
+            border-radius: 55px;
+            cursor: pointer;
+            background-image: url('home.png');
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-indent: 30px;
+        }
+
+        section {
+            background-color: rgb(92, 219, 103);
+            padding: 20px;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        label {
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 90%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+
+<body style="text-align: center;">
+
+    <h1>SPUTIFY</h1>
+  <div id="header">
+      <button onclick="goHome()"></button>
+  </div>
+    <section>
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <input name="username" type="text" placeholder="Username">
+            <input name="password" type="password" placeholder="Password">
+            <input type="submit" value="Login">
+        </form>
+    </section>
+    <script>
+      function goHome() {
+          window.location.href = 'http://localhost:5000';
+        }
+  </script>
+
+  </body>
+
+</html>

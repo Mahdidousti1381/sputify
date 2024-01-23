@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sputify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+        .inline-form {
+            display: flex;
+            align-items: center;
+            display: block;
+            padding: 5px;
+            width: 50%;
+            box-sizing: border-box;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[name="musicId"] {
+            margin-right: 10px;
+            margin-left: 20px;
+            padding: 10px;
+            background-color: #ccc;
+            border-radius: 5px;
+
+
+        }
+        #header {
+            background-color: #2cae48;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #main-content {
+            color: #333;
+            display: flex;
+            padding: 20px;
+        }
+
+        #left-sidebar {
+            flex: 1;
+            margin-left: 10px;
+
+        }
+
+        #user-info {
+            background-color: #2cae48;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            margin-left: 10px;
+        }
+
+        #artist-musics {
+            background-color: #2cae48;
+            padding: 20px;
+            border-radius: 10px;
+            margin-right: 20px;
+            margin-left: 10px;
+        }
+
+
+        #right-sidebar {
+            flex: 0.3;
+            margin-right: 10px;
+        }
+
+        #buttons-container {
+            background-color: #2cae48;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #music-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #music-table th,
+        #music-table td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #music-table th {
+            background-color: #333;
+            color: #2cae48;
+        }
+
+        #buttons-container button {
+            background-color: #333;
+            color: #2cae48;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #artist-musics button {
+            background-color: #333;
+            color: #2cae48;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #header button {
+            background-color: #333;
+            color: #fff;
+            padding: 35px;
+            margin: 0;
+            border: none;
+            border-radius: 55px;
+            cursor: pointer;
+            background-image: url('home.png');
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-indent: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <h1>LIBRARY</h1>
+        <button onclick="goHome()"></button>
+    </div>
+
+    <div id="main-content">
+
+        <div id="left-sidebar">
+            <div id="user-info">
+                <h2>You</h2>
+                <p>Mahdi</p>
+                <p>Followers: <span id="followers">100</span> | Following: <span id="following">50</span></p>
+                <!-- You can replace the following button with your functionality -->
+            </div>
+
+            <div id="artist-musics">
+                <h2>Your Musics</h2>
+                <form action="/postMusic" method="get">
+                    <button type="submit" class="button">Publish Music</button>
+                </form>
+                <form action="/deleteMusic" method="post" class = "inline-form">
+                    <button type="submit" class="button">Delete Music</button>
+                    <input name="musicId" type="text" placeholder="Music Id">
+                </form>
+                <table id="music-table">
+                    <thead>
+                        <tr>
+                            <th>Music Id</th>
+                            <th>Music Name</th>
+                            <th>Artist</th>
+                            <th>Year Published</th>
+                            <th>Album Name</th>
+                            <th>Genres</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td><a href="music1.html">music1</a></td>
+                            <td> Rez </td>
+                            <td> 2022 </td>
+                            <td> UT </td>
+                            <td> chil;rap </td>
+                            <td> 00:03:45 </td>
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td><a href="music2.html">music2</a></td>
+                            <td> Rez </td>
+                            <td> 2023 </td>
+                            <td> AP </td>
+                            <td> rock;clasical </td>
+                            <td> 00:03:22 </td>
+                        </tr>
+                        <!-- Add more playlist rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="right-sidebar">
+            <div id="buttons-container">
+                <h2>Navigation</h2>
+                <a href="http://localhost:5000/allMusics"><button>Visit All Music</button></a><br>
+                <a href="http://localhost:5000/allUsers"><button>Visit All Users</button></a><br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = 'http://localhost:5000';
+        }
+    </script>
+
+</body>
+
+</html>

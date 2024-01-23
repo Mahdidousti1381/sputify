@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPUTIFY</title>
+
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        img {
+            width: 5%;
+        }
+        
+        #likeBar {
+            padding: 10px;
+            text-align: center;
+        }
+        .like-button {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            padding: 0px 0px;
+            width:0pk;
+            height: 0px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            position: relative;
+            margin-top: 10px; 
+        }
+
+        .like-button::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(45deg);
+            transform-origin: -10% 75%;
+        }
+        .like-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 52px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .like-button::before {
+            left: 100px;
+        }
+
+        .like-button::after {
+            left: 100px;
+        }
+        a.button, button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #4CAF50; 
+    color: #fff;
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+}
+
+a.button:hover, button:hover {
+    background-color: #45a049; 
+}
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #333; 
+            color: #fff;
+            border-radius: 5px;
+            margin: 10px;
+            width: 240px;
+
+        }
+
+        button:hover {
+            background-color: #45a049; 
+        }
+        
+    </style>
+</head>
+
+
+
+
+<body>
+    <h1>SPUTIFY</h1>
+    <img src="/home.png" alt="Home Logo"><br>
+    <a href="/login" class="button">Go to login page</a><br>
+    <a href="/signup" class="button">Go to signup page</a><br>
+    <a href="/library" class="button">Library</a><br>
+    <form action="/logout" method="post">
+      <button type="submit" class="button">Logout</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sputify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2cae48;
+        }
+
+        input[type="text"],
+        input[type="submit"],
+        label {
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+            padding: 5px;
+            width: 70%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .inline-form {
+            display: flex;
+            align-items: center;
+        }
+        input[name="playlistName"] {
+            margin-right: 10px;
+            background-color: #ccc;
+
+        }
+        input[name="musicId"] {
+            margin-right: 10px;
+            margin-left: 10px;
+            background-color: #ccc;
+
+        }
+
+        #header {
+            background-color: #333;
+            color: #2cae48;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #main-content {
+            color: #fff;
+            display: flex;
+            padding: 20px;
+        }
+
+        #left-sidebar {
+            flex: 1;
+            margin-left: 10px;
+
+        }
+
+        #user-info {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            margin-left: 10px;
+        }
+
+        #user-playlists {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            margin-right: 20px;
+            margin-left: 10px;
+
+        }
+
+        #right-sidebar {
+            flex: 0.3;
+            margin-right: 10px;
+        }
+
+        #buttons-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        #playlist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #playlist-table th,
+        #playlist-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #playlist-table th {
+            background-color: #2cae48;
+            color: #000;
+        }
+
+        #buttons-container button {
+            background-color: #2cae48;
+            color: #333;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        #user-playlists button {
+            background-color: #2cae48;
+            color: #333;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        #header button {
+            background-color: #2cae48;
+            color: #fff;
+            padding: 35px;
+            margin: 0;
+            border: none;
+            border-radius: 55px;
+            cursor: pointer;
+            background-image: url('home.png');
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-indent: 30px;
+        }
+
+        #right-sidebar,
+        #right-sidebar-2 {
+            flex: 0.3;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+
+        #form-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 70%;
+            margin: auto;
+        }
+
+        #form-container input[type="text"]{
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+            padding: 5px;
+            width: 70%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ccc;
+        }
+        #form-container button {
+            display: block;
+            margin: auto;
+            margin-bottom: 15px;
+            padding: 5px;
+            width: 70%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #2cae48;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <h1>LIBRARY</h1>
+        <button onclick="goHome()"></button>
+    </div>
+
+    <div id="main-content">
+
+        <div id="left-sidebar">
+            <div id="user-info">
+                <h2>You</h2>
+                <p>Mahdi</p>
+                <p>Followers: <span id="followers">100</span> | Following: <span id="following">50</span></p>
+            </div>
+
+            <div id="user-playlists">
+                <h2>Manage Playlists</h2>
+                <form action="/postPlaylist" method="post" class = "inline-form">
+                    <button type="submit" class="button">Add Playlist</button>
+                    <input name="playlistName" type="text" placeholder="Playlist Name">
+                </form>
+                <form action="/deletePlaylist" method="post" class = "inline-form">
+                    <button type="submit" class="button">Delete Playlist</button>
+                    <input name="playlistName" type="text" placeholder="Playlist Name">
+                </form>
+                <form action="/addToPlaylist" method="post" class = "inline-form">
+                    <button type="submit" class="button">Add Music to Playlist</button>
+                    <input name="musicId" type="text" placeholder="Music Id">
+                    <input name="playlistName" type="text" placeholder="Playlist Name">
+                </form>
+                <table id="playlist-table">
+                    <thead>
+                        <tr>
+                            <th>Playlist Name</th>
+                            <th>Duration</th>
+                            <th>Songs Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="playlist1.html">Playlist 1</a></td>
+                            <td>03:45:00</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td><a href="playlist2.html">Playlist 2</a></td>
+                            <td>02:30:30</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="right-sidebar-2">
+            <div id="form-container">
+                <h2>Discover Musics</h2>
+                <form action="/search_music" method="get">
+                    <input name="musicName" type="text" placeholder="Music Name">
+                    <input name="singer" type="text" placeholder="Singer">
+                    <input name="genre" type="text" placeholder="Genre">
+                    <button type="submit" class="button">Search</button>
+                </form>
+            </div>
+        </div>
+        <div id="right-sidebar">
+            <div id="buttons-container">
+                <h2>Navigation</h2>
+                <button onclick=show_all_musics()>Visit All Musics</button><br>
+                    <button onclick=Show_recomendations()>Visit Recommendations</button><br>
+                    <button onclick=show_all_users()>Visit All Users</button><br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = 'http://localhost:5000';
+        }
+        function show_all_musics() {
+            window.location.href = 'http://localhost:5000';
+        }
+        function show_all_users() {
+            window.location.href = 'http://localhost:5000';
+        }
+        function Show_recomendations() {
+            window.location.href = 'http://localhost:5000';
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
